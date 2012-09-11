@@ -133,7 +133,9 @@
 		C8EDC75B15FFE11F00B7E47A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC75A15FFE11F00B7E47A /* AppDelegate.m */; };
 		C8EDC75E15FFE11F00B7E47A /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC75D15FFE11F00B7E47A /* HelloWorldLayer.m */; };
 		C8EDC76115FFE11F00B7E47A /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC76015FFE11F00B7E47A /* IntroLayer.m */; };
-		C8EDC76C15FFE53000B7E47A /* SpaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC76B15FFE53000B7E47A /* SpaceManager.m */; };
+		C8EDC76C15FFE53000B7E47A /* CellManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC76B15FFE53000B7E47A /* CellManager.m */; };
+		C8EDC77015FFE98200B7E47A /* GameConstants.mm in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC76F15FFE98200B7E47A /* GameConstants.mm */; };
+		C8EDC77415FFEB1100B7E47A /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC77315FFEB1100B7E47A /* Cell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -399,8 +401,12 @@
 		C8EDC75D15FFE11F00B7E47A /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		C8EDC75F15FFE11F00B7E47A /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		C8EDC76015FFE11F00B7E47A /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
-		C8EDC76A15FFE53000B7E47A /* SpaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceManager.h; sourceTree = "<group>"; };
-		C8EDC76B15FFE53000B7E47A /* SpaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceManager.m; sourceTree = "<group>"; };
+		C8EDC76A15FFE53000B7E47A /* CellManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellManager.h; sourceTree = "<group>"; };
+		C8EDC76B15FFE53000B7E47A /* CellManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellManager.m; sourceTree = "<group>"; };
+		C8EDC76E15FFE87D00B7E47A /* GameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConstants.h; sourceTree = "<group>"; };
+		C8EDC76F15FFE98200B7E47A /* GameConstants.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameConstants.mm; sourceTree = "<group>"; };
+		C8EDC77215FFEB1100B7E47A /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
+		C8EDC77315FFEB1100B7E47A /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -459,6 +465,7 @@
 		C8EDC5E115FFE11D00B7E47A /* Prototype */ = {
 			isa = PBXGroup;
 			children = (
+				C8EDC76D15FFE85C00B7E47A /* Utils */,
 				C8EDC76715FFE3EB00B7E47A /* Layers */,
 				C8EDC75915FFE11F00B7E47A /* AppDelegate.h */,
 				C8EDC75A15FFE11F00B7E47A /* AppDelegate.m */,
@@ -835,6 +842,7 @@
 		C8EDC76715FFE3EB00B7E47A /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				C8EDC77115FFEAFF00B7E47A /* CoreClasses */,
 				C8EDC76915FFE40300B7E47A /* Managers */,
 				C8EDC76815FFE3F800B7E47A /* Default */,
 			);
@@ -855,10 +863,28 @@
 		C8EDC76915FFE40300B7E47A /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				C8EDC76A15FFE53000B7E47A /* SpaceManager.h */,
-				C8EDC76B15FFE53000B7E47A /* SpaceManager.m */,
+				C8EDC76A15FFE53000B7E47A /* CellManager.h */,
+				C8EDC76B15FFE53000B7E47A /* CellManager.m */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		C8EDC76D15FFE85C00B7E47A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C8EDC76E15FFE87D00B7E47A /* GameConstants.h */,
+				C8EDC76F15FFE98200B7E47A /* GameConstants.mm */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		C8EDC77115FFEAFF00B7E47A /* CoreClasses */ = {
+			isa = PBXGroup;
+			children = (
+				C8EDC77215FFEB1100B7E47A /* Cell.h */,
+				C8EDC77315FFEB1100B7E47A /* Cell.m */,
+			);
+			name = CoreClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1038,7 +1064,9 @@
 				C8EDC75B15FFE11F00B7E47A /* AppDelegate.m in Sources */,
 				C8EDC75E15FFE11F00B7E47A /* HelloWorldLayer.m in Sources */,
 				C8EDC76115FFE11F00B7E47A /* IntroLayer.m in Sources */,
-				C8EDC76C15FFE53000B7E47A /* SpaceManager.m in Sources */,
+				C8EDC76C15FFE53000B7E47A /* CellManager.m in Sources */,
+				C8EDC77015FFE98200B7E47A /* GameConstants.mm in Sources */,
+				C8EDC77415FFEB1100B7E47A /* Cell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
