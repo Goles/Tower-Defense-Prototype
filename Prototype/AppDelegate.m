@@ -9,8 +9,9 @@
 #import "cocos2d.h"
 
 #import "AppDelegate.h"
-#import "IntroLayer.h"
-#import "CellManager.h"
+#import "GameManager.h"
+#import "GameScene.h"
+#import "GameSettings.h"
 
 @implementation AppController
 
@@ -18,10 +19,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Crash benchmark
-    [CellManager sharedManager];
-    
-    
 	// Create the main window
 	window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
@@ -78,7 +75,7 @@
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
 
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-	[director_ pushScene: [IntroLayer scene]]; 
+//	[director_ pushScene: [IntroLayer scene]]; 
 
 	
 	// Create a Navigation Controller with the Director
@@ -91,6 +88,12 @@
 	
 	// make main window visible
 	[window_ makeKeyAndVisible];
+    
+    // Initialize the Prototype
+    [GameManager sharedManager];
+	// Run the intro Scene
+    CCScene *scene = [GameScene scene];
+    [[CCDirector sharedDirector] runWithScene:scene];
 	
 	return YES;
 }

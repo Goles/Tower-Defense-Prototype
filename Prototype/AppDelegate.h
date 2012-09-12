@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
 
+@class RootViewController;
+
 @interface AppController : NSObject <UIApplicationDelegate, CCDirectorDelegate>
 {
 	UIWindow *window_;
 	UINavigationController *navController_;
-
+	RootViewController	*viewController;
 	CCDirectorIOS	*director_;							// weak ref
 }
 

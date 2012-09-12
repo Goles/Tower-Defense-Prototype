@@ -131,11 +131,17 @@
 		C8EDC75315FFE11F00B7E47A /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC75215FFE11F00B7E47A /* vec4.c */; };
 		C8EDC75815FFE11F00B7E47A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC75715FFE11F00B7E47A /* main.m */; };
 		C8EDC75B15FFE11F00B7E47A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC75A15FFE11F00B7E47A /* AppDelegate.m */; };
-		C8EDC75E15FFE11F00B7E47A /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC75D15FFE11F00B7E47A /* HelloWorldLayer.m */; };
-		C8EDC76115FFE11F00B7E47A /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC76015FFE11F00B7E47A /* IntroLayer.m */; };
-		C8EDC76C15FFE53000B7E47A /* CellManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC76B15FFE53000B7E47A /* CellManager.m */; };
-		C8EDC77015FFE98200B7E47A /* GameConstants.mm in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC76F15FFE98200B7E47A /* GameConstants.mm */; };
 		C8EDC77415FFEB1100B7E47A /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC77315FFEB1100B7E47A /* Cell.m */; };
+		C8EDC7841600D67300B7E47A /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC7831600D67300B7E47A /* GameManager.m */; };
+		C8EDC7871600D9D600B7E47A /* Waypoint.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC7861600D9D600B7E47A /* Waypoint.m */; };
+		C8EDC78A1600DA4200B7E47A /* Creep.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC7891600DA4200B7E47A /* Creep.m */; };
+		C8EDC79216010FB900B7E47A /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC79116010FB900B7E47A /* GameScene.m */; };
+		C8EDC795160116E100B7E47A /* Wave.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EDC794160116E100B7E47A /* Wave.m */; };
+		C8EDC7A71601209400B7E47A /* Enemy1.png in Resources */ = {isa = PBXBuildFile; fileRef = C8EDC7A21601209400B7E47A /* Enemy1.png */; };
+		C8EDC7A81601209400B7E47A /* Enemy2.png in Resources */ = {isa = PBXBuildFile; fileRef = C8EDC7A31601209400B7E47A /* Enemy2.png */; };
+		C8EDC7A91601209400B7E47A /* meta_tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = C8EDC7A41601209400B7E47A /* meta_tiles.png */; };
+		C8EDC7AA1601209400B7E47A /* TileMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C8EDC7A51601209400B7E47A /* TileMap.tmx */; };
+		C8EDC7AB1601209400B7E47A /* tmw_desert_spacing.png in Resources */ = {isa = PBXBuildFile; fileRef = C8EDC7A61601209400B7E47A /* tmw_desert_spacing.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -397,16 +403,24 @@
 		C8EDC75715FFE11F00B7E47A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C8EDC75915FFE11F00B7E47A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C8EDC75A15FFE11F00B7E47A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C8EDC75C15FFE11F00B7E47A /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		C8EDC75D15FFE11F00B7E47A /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
-		C8EDC75F15FFE11F00B7E47A /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
-		C8EDC76015FFE11F00B7E47A /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
-		C8EDC76A15FFE53000B7E47A /* CellManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellManager.h; sourceTree = "<group>"; };
-		C8EDC76B15FFE53000B7E47A /* CellManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellManager.m; sourceTree = "<group>"; };
-		C8EDC76E15FFE87D00B7E47A /* GameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConstants.h; sourceTree = "<group>"; };
-		C8EDC76F15FFE98200B7E47A /* GameConstants.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameConstants.mm; sourceTree = "<group>"; };
 		C8EDC77215FFEB1100B7E47A /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
 		C8EDC77315FFEB1100B7E47A /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
+		C8EDC7821600D67300B7E47A /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
+		C8EDC7831600D67300B7E47A /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
+		C8EDC7851600D9D600B7E47A /* Waypoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Waypoint.h; sourceTree = "<group>"; };
+		C8EDC7861600D9D600B7E47A /* Waypoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Waypoint.m; sourceTree = "<group>"; };
+		C8EDC7881600DA4200B7E47A /* Creep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Creep.h; sourceTree = "<group>"; };
+		C8EDC7891600DA4200B7E47A /* Creep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Creep.m; sourceTree = "<group>"; };
+		C8EDC79016010FB900B7E47A /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		C8EDC79116010FB900B7E47A /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		C8EDC793160116E100B7E47A /* Wave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wave.h; sourceTree = "<group>"; };
+		C8EDC794160116E100B7E47A /* Wave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wave.m; sourceTree = "<group>"; };
+		C8EDC7A116011F7500B7E47A /* GameSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSettings.h; sourceTree = "<group>"; };
+		C8EDC7A21601209400B7E47A /* Enemy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Enemy1.png; path = Resources/Enemy1.png; sourceTree = "<group>"; };
+		C8EDC7A31601209400B7E47A /* Enemy2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Enemy2.png; path = Resources/Enemy2.png; sourceTree = "<group>"; };
+		C8EDC7A41601209400B7E47A /* meta_tiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = meta_tiles.png; path = Resources/meta_tiles.png; sourceTree = "<group>"; };
+		C8EDC7A51601209400B7E47A /* TileMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = TileMap.tmx; path = Resources/TileMap.tmx; sourceTree = "<group>"; };
+		C8EDC7A61601209400B7E47A /* tmw_desert_spacing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tmw_desert_spacing.png; path = Resources/tmw_desert_spacing.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -465,6 +479,8 @@
 		C8EDC5E115FFE11D00B7E47A /* Prototype */ = {
 			isa = PBXGroup;
 			children = (
+				C8EDC77115FFEAFF00B7E47A /* CoreClasses */,
+				C8EDC76915FFE40300B7E47A /* Managers */,
 				C8EDC76D15FFE85C00B7E47A /* Utils */,
 				C8EDC76715FFE3EB00B7E47A /* Layers */,
 				C8EDC75915FFE11F00B7E47A /* AppDelegate.h */,
@@ -479,6 +495,8 @@
 		C8EDC5E215FFE11D00B7E47A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C8EDC79816011DBE00B7E47A /* TileMap */,
+				C8EDC78B16010D2B00B7E47A /* Graphics */,
 				C8EDC5E315FFE11D00B7E47A /* Default.png */,
 				C8EDC5E515FFE11D00B7E47A /* Default-Landscape~ipad.png */,
 				C8EDC5E715FFE11D00B7E47A /* fps_images.png */,
@@ -842,29 +860,17 @@
 		C8EDC76715FFE3EB00B7E47A /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				C8EDC77115FFEAFF00B7E47A /* CoreClasses */,
-				C8EDC76915FFE40300B7E47A /* Managers */,
-				C8EDC76815FFE3F800B7E47A /* Default */,
+				C8EDC79016010FB900B7E47A /* GameScene.h */,
+				C8EDC79116010FB900B7E47A /* GameScene.m */,
 			);
 			name = Layers;
-			sourceTree = "<group>";
-		};
-		C8EDC76815FFE3F800B7E47A /* Default */ = {
-			isa = PBXGroup;
-			children = (
-				C8EDC75C15FFE11F00B7E47A /* HelloWorldLayer.h */,
-				C8EDC75D15FFE11F00B7E47A /* HelloWorldLayer.m */,
-				C8EDC75F15FFE11F00B7E47A /* IntroLayer.h */,
-				C8EDC76015FFE11F00B7E47A /* IntroLayer.m */,
-			);
-			name = Default;
 			sourceTree = "<group>";
 		};
 		C8EDC76915FFE40300B7E47A /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				C8EDC76A15FFE53000B7E47A /* CellManager.h */,
-				C8EDC76B15FFE53000B7E47A /* CellManager.m */,
+				C8EDC7821600D67300B7E47A /* GameManager.h */,
+				C8EDC7831600D67300B7E47A /* GameManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -872,8 +878,7 @@
 		C8EDC76D15FFE85C00B7E47A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				C8EDC76E15FFE87D00B7E47A /* GameConstants.h */,
-				C8EDC76F15FFE98200B7E47A /* GameConstants.mm */,
+				C8EDC7A116011F7500B7E47A /* GameSettings.h */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -883,8 +888,33 @@
 			children = (
 				C8EDC77215FFEB1100B7E47A /* Cell.h */,
 				C8EDC77315FFEB1100B7E47A /* Cell.m */,
+				C8EDC7851600D9D600B7E47A /* Waypoint.h */,
+				C8EDC7861600D9D600B7E47A /* Waypoint.m */,
+				C8EDC7881600DA4200B7E47A /* Creep.h */,
+				C8EDC7891600DA4200B7E47A /* Creep.m */,
+				C8EDC793160116E100B7E47A /* Wave.h */,
+				C8EDC794160116E100B7E47A /* Wave.m */,
 			);
 			name = CoreClasses;
+			sourceTree = "<group>";
+		};
+		C8EDC78B16010D2B00B7E47A /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
+		C8EDC79816011DBE00B7E47A /* TileMap */ = {
+			isa = PBXGroup;
+			children = (
+				C8EDC7A21601209400B7E47A /* Enemy1.png */,
+				C8EDC7A31601209400B7E47A /* Enemy2.png */,
+				C8EDC7A41601209400B7E47A /* meta_tiles.png */,
+				C8EDC7A51601209400B7E47A /* TileMap.tmx */,
+				C8EDC7A61601209400B7E47A /* tmw_desert_spacing.png */,
+			);
+			name = TileMap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -950,6 +980,11 @@
 				C8EDC5F815FFE11D00B7E47A /* Icon@2x.png in Resources */,
 				C8EDC5FB15FFE11D00B7E47A /* iTunesArtwork in Resources */,
 				C8EDC73915FFE11E00B7E47A /* ChangeLog in Resources */,
+				C8EDC7A71601209400B7E47A /* Enemy1.png in Resources */,
+				C8EDC7A81601209400B7E47A /* Enemy2.png in Resources */,
+				C8EDC7A91601209400B7E47A /* meta_tiles.png in Resources */,
+				C8EDC7AA1601209400B7E47A /* TileMap.tmx in Resources */,
+				C8EDC7AB1601209400B7E47A /* tmw_desert_spacing.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1062,11 +1097,12 @@
 				C8EDC75315FFE11F00B7E47A /* vec4.c in Sources */,
 				C8EDC75815FFE11F00B7E47A /* main.m in Sources */,
 				C8EDC75B15FFE11F00B7E47A /* AppDelegate.m in Sources */,
-				C8EDC75E15FFE11F00B7E47A /* HelloWorldLayer.m in Sources */,
-				C8EDC76115FFE11F00B7E47A /* IntroLayer.m in Sources */,
-				C8EDC76C15FFE53000B7E47A /* CellManager.m in Sources */,
-				C8EDC77015FFE98200B7E47A /* GameConstants.mm in Sources */,
 				C8EDC77415FFEB1100B7E47A /* Cell.m in Sources */,
+				C8EDC7841600D67300B7E47A /* GameManager.m in Sources */,
+				C8EDC7871600D9D600B7E47A /* Waypoint.m in Sources */,
+				C8EDC78A1600DA4200B7E47A /* Creep.m in Sources */,
+				C8EDC79216010FB900B7E47A /* GameScene.m in Sources */,
+				C8EDC795160116E100B7E47A /* Wave.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
