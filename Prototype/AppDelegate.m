@@ -91,8 +91,13 @@
     
     // Initialize the Prototype
     [GameManager sharedManager];
-	// Run the intro Scene
+    
     CCScene *scene = [GameScene scene];
+    GameScene *layer = (GameScene *)[scene.children objectAtIndex:0];
+    UIPanGestureRecognizer *gestureRecognizer = [[[UIPanGestureRecognizer alloc] initWithTarget:layer action:@selector(handlePanFrom:)] autorelease];
+    [navController_.view addGestureRecognizer:gestureRecognizer];
+	[GameManager sharedManager].gestureRecognizer = gestureRecognizer;
+    
     [[CCDirector sharedDirector] runWithScene:scene];
 	
 	return YES;

@@ -33,7 +33,6 @@
 - (Waypoint *) currentWaypoint
 {
     GameManager *manager = [GameManager sharedManager];
-    NSLog(@"WP INDEX %d", self.currentWaypointIndex);
     Waypoint *waypoint = [manager.waypoints objectAtIndex:self.currentWaypointIndex];
     return waypoint;
 }
@@ -48,9 +47,6 @@
     if (self.currentWaypointIndex >= lastWaypointIndex) {
         self.currentWaypointIndex = lastWaypointIndex - 1;
     }
-    
-    NSLog(@"--> %d",self.currentWaypointIndex);
-    NSLog(@"*** %d", lastWaypointIndex);
     
     Waypoint *waypoint = [manager.waypoints objectAtIndex:self.currentWaypointIndex];
     return waypoint;
