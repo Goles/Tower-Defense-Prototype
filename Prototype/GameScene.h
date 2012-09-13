@@ -11,6 +11,7 @@
 @class Creep;
 @class Waypoint;
 @class Wave;
+@class Hud;
 
 @interface GameScene : CCLayer
 
@@ -21,5 +22,7 @@
 + (id) scene;
 - (void) addWaypoints;
 - (void) addWaves;
+- (void) addTowerAtPoint:(CGPoint) point;
+- (BOOL) canBuildAtPosition:(CGPoint) point;
 
 @end

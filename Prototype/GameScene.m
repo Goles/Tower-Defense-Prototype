@@ -11,6 +11,8 @@
 #import "Wave.h"
 #import "Creep.h"
 #import "Waypoint.h"
+#import "Tower.h"	
+#import "hud.h"
 
 @implementation GameScene
 
@@ -19,7 +21,10 @@
     CCScene *scene = [CCScene node];
     GameScene *layer = [GameScene node];
     [scene addChild:layer z:1];
+    [scene addChild:[Hud sharedManager] z:2];
+    
     [[GameManager sharedManager] setGameLayer:layer];
+    [[GameManager sharedManager] setHudLayer:[Hud sharedManager]];
     
     return scene;
 }
@@ -69,6 +74,51 @@
         [[GameManager sharedManager].waypoints addObject:waypoint];
         ++spawnPointCounter;
     }
+}
+
+- (CGPoint) tileCoordForPosition:(CGPoint) position
+{
+	int x = position.x / self.tileMap.tileSize.width;
+	int y = ((self.tileMap.mapSize.height * self.tileMap.tileSize.height) - position.y) / self.tileMap.tileSize.height;
+	
+	return ccp(x,y);
+}
+
+- (void) addTowerAtPoint:(CGPoint) point
+{
+	Tower *tower = nil;
+	CGPoint towerPosition = [self tileCoordForPosition:point];
+	
+	int tileGid = [self.background tileGIDAt:towerPosition];
+	NSDictionary *props = [self.tileMap propertiesForGID:tileGid];
+	NSString *type = [props valueForKey:@"buildable"];
+	
+	if([type isEqualToString: @"1"]) {
+		tower = [BasicTower tower];
+		tower.position = ccp((towerPosition.x * 32) + 16, self.tileMap.contentSize.height - (towerPosition.y * 32) - 16);
+		[self addChild:tower z:1];
+		
+		tower.tag = 1;
+		[[GameManager sharedManager].towers addObject:tower];
+		
+	} else {
+		NSLog(@"Tile Not Buildable");
+	}
+    
+}
+
+- (BOOL) canBuildAtPosition:(CGPoint) point
+{
+	CGPoint towerPosition = [self tileCoordForPosition:point];
+	int tileGid = [self.background tileGIDAt:towerPosition];
+	NSDictionary *properties = [self.tileMap propertiesForGID:tileGid];
+	NSString *type = [properties valueForKey:@"buildable"];
+	
+	if([type isEqualToString: @"1"]) {
+		return YES;
+	}
+	
+	return NO;
 }
 
 - (Wave *) currentWave

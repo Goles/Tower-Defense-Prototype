@@ -42,6 +42,7 @@ static GameManager *_sharedInstance = nil;
         _targets = [[NSMutableArray alloc] init];
         _waypoints = [[NSMutableArray alloc] init];
         _waves = [[NSMutableArray alloc] init];
+        _towers = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -54,6 +55,9 @@ static GameManager *_sharedInstance = nil;
     _targets = nil;
     _waypoints = nil;
     _waves = nil;
+    
+    [_towers release];
+    _towers = nil;
     
     [super dealloc];
 }
