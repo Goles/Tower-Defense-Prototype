@@ -14,6 +14,8 @@
 		C891F26D16021E4F001AFE60 /* hud_background.png in Resources */ = {isa = PBXBuildFile; fileRef = C891F26C16021E4F001AFE60 /* hud_background.png */; };
 		C891F26F16021E75001AFE60 /* tower_range.png in Resources */ = {isa = PBXBuildFile; fileRef = C891F26E16021E75001AFE60 /* tower_range.png */; };
 		C891F27216021E87001AFE60 /* hud.m in Sources */ = {isa = PBXBuildFile; fileRef = C891F27116021E87001AFE60 /* hud.m */; };
+		C8CFE9931640648D00E199FF /* Projectile.m in Sources */ = {isa = PBXBuildFile; fileRef = C8CFE9921640648D00E199FF /* Projectile.m */; };
+		C8CFE9961640674F00E199FF /* Projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = C8CFE9951640674F00E199FF /* Projectile.png */; };
 		C8EDC5D015FFE11D00B7E47A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8EDC5CF15FFE11D00B7E47A /* QuartzCore.framework */; };
 		C8EDC5D215FFE11D00B7E47A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8EDC5D115FFE11D00B7E47A /* OpenGLES.framework */; };
 		C8EDC5D415FFE11D00B7E47A /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8EDC5D315FFE11D00B7E47A /* OpenAL.framework */; };
@@ -160,6 +162,9 @@
 		C891F26E16021E75001AFE60 /* tower_range.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tower_range.png; sourceTree = "<group>"; };
 		C891F27016021E87001AFE60 /* hud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hud.h; sourceTree = "<group>"; };
 		C891F27116021E87001AFE60 /* hud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hud.m; sourceTree = "<group>"; };
+		C8CFE9911640648D00E199FF /* Projectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Projectile.h; sourceTree = "<group>"; };
+		C8CFE9921640648D00E199FF /* Projectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Projectile.m; sourceTree = "<group>"; };
+		C8CFE9951640674F00E199FF /* Projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Projectile.png; sourceTree = "<group>"; };
 		C8EDC5CB15FFE11D00B7E47A /* Prototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8EDC5CF15FFE11D00B7E47A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C8EDC5D115FFE11D00B7E47A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -901,6 +906,8 @@
 		C8EDC77115FFEAFF00B7E47A /* CoreClasses */ = {
 			isa = PBXGroup;
 			children = (
+				C8CFE9911640648D00E199FF /* Projectile.h */,
+				C8CFE9921640648D00E199FF /* Projectile.m */,
 				C8EDC7851600D9D600B7E47A /* Waypoint.h */,
 				C8EDC7861600D9D600B7E47A /* Waypoint.m */,
 				C8EDC7881600DA4200B7E47A /* Creep.h */,
@@ -916,6 +923,7 @@
 		C8EDC78B16010D2B00B7E47A /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				C8CFE9951640674F00E199FF /* Projectile.png */,
 				C891F26E16021E75001AFE60 /* tower_range.png */,
 				C891F26C16021E4F001AFE60 /* hud_background.png */,
 				C891F25E160212D5001AFE60 /* Enemy1.png */,
@@ -1010,6 +1018,7 @@
 				C891F261160212D5001AFE60 /* Enemy2.png in Resources */,
 				C891F26D16021E4F001AFE60 /* hud_background.png in Resources */,
 				C891F26F16021E75001AFE60 /* tower_range.png in Resources */,
+				C8CFE9961640674F00E199FF /* Projectile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1129,6 +1138,7 @@
 				C8EDC795160116E100B7E47A /* Wave.m in Sources */,
 				C891F25B16021012001AFE60 /* Tower.m in Sources */,
 				C891F27216021E87001AFE60 /* hud.m in Sources */,
+				C8CFE9931640648D00E199FF /* Projectile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

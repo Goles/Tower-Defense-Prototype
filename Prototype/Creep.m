@@ -63,7 +63,7 @@
 {
     FastRed *creep = nil;
     if ((creep = [[[self alloc] initWithFile:@"Enemy1.png"] autorelease])) {
-        creep.currentHitPoints = 40;
+        creep.currentHitPoints = 4;
         creep.moveDuration = 9;
         creep.currentWaypointIndex = 0;
     }

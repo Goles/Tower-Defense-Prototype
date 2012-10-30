@@ -8,10 +8,16 @@
 
 #import "cocos2d.h"
 
+@class Creep;
+@class Projectile;
+
 @interface Tower : CCSprite
 
 @property (assign) int range;
 @property (strong) CCSprite *rangeSprite;
+@property (strong) Creep *target;
+@property (strong) NSMutableArray *projectiles;
+@property (strong) Projectile *nextProjectile;
 
 @end
 

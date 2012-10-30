@@ -16,6 +16,7 @@
 @property (strong) NSMutableArray *targets;
 @property (strong) NSMutableArray *waypoints;
 @property (strong) NSMutableArray *waves;
+@property (strong) NSMutableArray *projectiles;
 @property (strong) UIPanGestureRecognizer *gestureRecognizer;
 
 + (GameManager *) sharedManager;

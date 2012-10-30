@@ -14,6 +14,7 @@
 @property (strong) CCSprite *selectedSprite;
 @property (strong) CCSprite *selectedSpriteRange;
 @property (strong) NSMutableArray *movable;
+@property (assign) BOOL didStartDraggingSprite;
 
 + (Hud *) sharedManager;
 

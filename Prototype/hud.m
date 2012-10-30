@@ -72,6 +72,7 @@
             
             CCSprite *newSprite = [CCSprite spriteWithTexture:[sprite texture]];
             newSprite.position = sprite.position;
+            newSprite.scale = 2.0f;
             _selectedSprite = newSprite;
             [self addChild:newSprite];
             
@@ -92,6 +93,11 @@
     
     if (_selectedSprite) {
         CGPoint newPosition = ccpAdd(_selectedSprite.position, translation);
+        if (!_didStartDraggingSprite) {
+            newPosition.y += 32.0f;
+            _didStartDraggingSprite = YES;
+        }
+
         _selectedSprite.position = newPosition;
         _selectedSpriteRange.position = newPosition;
         CGPoint touchLocationInGameLayer = [[GameManager sharedManager].gameLayer convertTouchToNodeSpace:touch];
@@ -109,7 +115,8 @@
 - (void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
-    
+
+
     if (_selectedSprite) {
         CGRect backgroundRect = CGRectMake(_background.position.x,
                                            _background.position.y,
@@ -125,6 +132,10 @@
 		_selectedSprite = nil;
 		[self removeChild:_selectedSpriteRange cleanup:YES];
 		_selectedSpriteRange = nil;
+
+        if (_didStartDraggingSprite) {
+            _didStartDraggingSprite = NO;
+        }
     }
     
     [GameManager sharedManager].gestureRecognizer.enabled = YES;

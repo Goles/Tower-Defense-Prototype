@@ -13,6 +13,7 @@
 #import "Waypoint.h"
 #import "Tower.h"	
 #import "hud.h"
+#import "Projectile.h"
 
 @implementation GameScene
 
@@ -199,7 +200,52 @@
 
 - (void) update:(ccTime) dt
 {
-    // Update the game! :D
+    GameManager *m = [GameManager sharedManager];
+	NSMutableArray *projectilesToDelete = [[NSMutableArray alloc] init];
+
+	for (Projectile *projectile in m.projectiles) {
+
+		CGRect projectileRect = CGRectMake(projectile.position.x - (projectile.contentSize.width/2),
+										   projectile.position.y - (projectile.contentSize.height/2),
+										   projectile.contentSize.width,
+										   projectile.contentSize.height);
+
+		NSMutableArray *targetsToDelete = [[NSMutableArray alloc] init];
+
+		for (CCSprite *target in m.targets) {
+			CGRect targetRect = CGRectMake(target.position.x - (target.contentSize.width/2),
+										   target.position.y - (target.contentSize.height/2),
+										   target.contentSize.width,
+										   target.contentSize.height);
+
+			if (CGRectIntersectsRect(projectileRect, targetRect)) {
+
+				[projectilesToDelete addObject:projectile];
+
+                Creep *creep = (Creep *)target;
+                creep.currentHitPoints--;
+
+                if (creep.currentHitPoints <= 0) {
+                    [targetsToDelete addObject:target];
+                }
+                break;
+
+			}
+		}
+
+		for (CCSprite *target in targetsToDelete) {
+			[m.targets removeObject:target];
+			[self removeChild:target cleanup:YES];
+		}
+
+		[targetsToDelete release];
+	}
+
+	for (CCSprite *projectile in projectilesToDelete) {
+		[m.projectiles removeObject:projectile];
+		[self removeChild:projectile cleanup:YES];
+	}
+	[projectilesToDelete release];
 }
 
 - (CGPoint) boundLayerPos:(CGPoint) newPos
