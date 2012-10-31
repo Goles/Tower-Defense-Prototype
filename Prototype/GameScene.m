@@ -53,12 +53,13 @@
 
         // Load Defaults
         _totalMoney = [[[GameManager sharedManager] defaultSettings] objectForKey:K_TOTAL_INITIAL_MONEY];
-        NSLog(@"%@", _totalMoney);
     }
 
     return self;
 }
 
+#pragma mark -
+#pragma mark Add Game Elements
 
 - (void) addWaves
 {
@@ -94,24 +95,28 @@
 {
     Tower *tower = nil;
     CGPoint towerPosition = [self tileCoordForPosition:point];
-
     int tileGid = [self.background tileGIDAt:towerPosition];
     NSDictionary *props = [self.tileMap propertiesForGID:tileGid];
     NSString *type = [props valueForKey:@"buildable"];
 
-    if([type isEqualToString: @"1"]) {
+    if ([type isEqualToString: @"1"]) {
         tower = [BasicTower tower];
-        tower.position = ccp((towerPosition.x * 32) + 16, self.tileMap.contentSize.height - (towerPosition.y * 32) - 16);
-        [self addChild:tower z:1];
 
-        tower.tag = 1;
-        [[GameManager sharedManager].towers addObject:tower];
+        // We check if the player has enough money to build the tower in the first place
+        if ([self substractMoney:[tower cost]]) {
+            tower.position = ccp((towerPosition.x * 32) + 16, self.tileMap.contentSize.height - (towerPosition.y * 32) - 16);
+            [self addChild:tower z:1];
+            tower.tag = 1;
+            [[GameManager sharedManager].towers addObject:tower];
+        }
 
     } else {
         NSLog(@"Tile Not Buildable");
     }
-
 }
+
+#pragma mark -
+#pragma mark Checks
 
 - (BOOL) canBuildAtPosition:(CGPoint) point
 {
@@ -135,11 +140,11 @@
 - (Wave *) nextWave
 {
     _currentLevel++;
-    
+
     // TODO: Delete later
     if (_currentLevel > 1)
         _currentLevel = 0;
-    
+
     return [[GameManager sharedManager].waves objectAtIndex:_currentLevel];
 }
 
@@ -289,6 +294,33 @@
         [self runAction:[CCEaseOut actionWithAction:moveTo rate:1]];
 
     }
+}
+
+#pragma mark -
+#pragma mark Global Operations
+- (BOOL) checkMoneySubstractionValidity:(int) amount
+{
+    if (amount > _totalMoney) {
+        return NO;
+    }
+
+    return YES;
+}
+
+- (BOOL) substractMoney:(int) amount
+{
+    if ([self checkMoneySubstractionValidity:amount]) {
+        _totalMoney -= amount;
+        return YES;
+    }
+
+    return NO;
+
+}
+
+- (void) addMoney:(int) amount
+{
+    _totalMoney += amount;
 }
 
 @end

@@ -44,7 +44,7 @@
 - (id) init
 {
     if (self = [super init]) {
-        // init
+        self.cost = 20;
     }
 
     return self;
@@ -74,42 +74,37 @@
         float rotateSpeed = 0.5 / M_PI;
         float rotateDuration = fabs(shootAngle * rotateSpeed);
 
-		[self runAction:[CCSequence actions:
-						 [CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],
-						 [CCCallFunc actionWithTarget:self selector:@selector(finishFiring)],
-						 nil]];
+        [self runAction:[CCSequence actions:[CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],
+                                             [CCCallFunc actionWithTarget:self selector:@selector(finishFiring)], nil]];
     }
 }
 
 
 - (void)finishFiring
 {
-	GameManager *m = [GameManager sharedManager];
-	self.nextProjectile = [Projectile projectile];
-	self.nextProjectile.position = self.position;
+    GameManager *m = [GameManager sharedManager];
+    self.nextProjectile = [Projectile projectile];
+    self.nextProjectile.position = self.position;
     [self.parent addChild:self.nextProjectile z:1];
     [m.projectiles addObject:self.nextProjectile];
 
-	ccTime delta = 1.0;
-	CGPoint shootVector = ccpSub(self.target.position, self.position);
-	CGPoint normalizedShootVector = ccpNormalize(shootVector);
-	CGPoint overshotVector = ccpMult(normalizedShootVector, 320);
-	CGPoint offscreenPoint = ccpAdd(self.position, overshotVector);
+    ccTime delta = 1.0;
+    CGPoint shootVector = ccpSub(self.target.position, self.position);
+    CGPoint normalizedShootVector = ccpNormalize(shootVector);
+    CGPoint overshotVector = ccpMult(normalizedShootVector, 320);
+    CGPoint offscreenPoint = ccpAdd(self.position, overshotVector);
 
-	[self.nextProjectile runAction:[CCSequence actions:
-                                    [CCMoveTo actionWithDuration:delta position:offscreenPoint],
-                                    [CCCallFuncN actionWithTarget:self selector:@selector(creepMoveFinished:)],
-                                    nil]];
-	
-	self.nextProjectile.tag = 2;		
+    [self.nextProjectile runAction:[CCSequence actions:[CCMoveTo actionWithDuration:delta position:offscreenPoint],
+                                                       [CCCallFuncN actionWithTarget:self selector:@selector(creepMoveFinished:)], nil]];
+    self.nextProjectile.tag = 2;
 }
 
 -(void)creepMoveFinished:(id)sender
 {
-	GameManager *m = [GameManager sharedManager];
-	CCSprite *sprite = (CCSprite *)sender;
-	[self.parent removeChild:sprite cleanup:YES];
-	[m.projectiles removeObject:sprite];
+    GameManager *m = [GameManager sharedManager];
+    CCSprite *sprite = (CCSprite *)sender;
+    [self.parent removeChild:sprite cleanup:YES];
+    [m.projectiles removeObject:sprite];
 }
 
 @end

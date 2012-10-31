@@ -14,6 +14,7 @@
 @interface Tower : CCSprite
 
 @property (assign) int range;
+@property (assign) int cost;
 @property (strong) CCSprite *rangeSprite;
 @property (strong) Creep *target;
 @property (strong) NSMutableArray *projectiles;

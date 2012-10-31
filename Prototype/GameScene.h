@@ -21,9 +21,17 @@
 @property (assign) int totalMoney;
 
 + (id) scene;
+
+// To add Game Elements
 - (void) addWaypoints;
 - (void) addWaves;
 - (void) addTowerAtPoint:(CGPoint) point;
+
+// To Performn Checks
 - (BOOL) canBuildAtPosition:(CGPoint) point;
+
+// For Global Operations
+- (BOOL) substractMoney:(int) amount;
+- (void) addMoney:(int) amount;
 
 @end

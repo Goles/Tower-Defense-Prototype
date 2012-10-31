@@ -27,7 +27,6 @@ static GameManager *_sharedInstance = nil;
 #pragma mark NSCoder
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-
 }
 
 - (id) initWithCoder:(NSCoder *)aDecoder
