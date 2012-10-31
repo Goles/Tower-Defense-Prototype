@@ -7,6 +7,7 @@
 //
 
 #import "GameManager.h"
+#import "ConstantsAndMacros.h"
 
 static GameManager *_sharedInstance = nil;
 
@@ -18,7 +19,7 @@ static GameManager *_sharedInstance = nil;
     if (!_sharedInstance) {
         _sharedInstance = [[self alloc] init];
     }
-    
+
     return _sharedInstance;
 }
 
@@ -26,7 +27,7 @@ static GameManager *_sharedInstance = nil;
 #pragma mark NSCoder
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    
+
 }
 
 - (id) initWithCoder:(NSCoder *)aDecoder
@@ -44,8 +45,13 @@ static GameManager *_sharedInstance = nil;
         _waves = [[NSMutableArray alloc] init];
         _towers = [[NSMutableArray alloc] init];
         _projectiles = [[NSMutableArray alloc] init];
+
+        // Load Default Dictionary
+        NSBundle *bundle = [NSBundle mainBundle];
+        NSString *plistPath = [bundle pathForResource:DEFAULTS_FILE_NAME ofType:DEFAULTS_FILE_TYPE];
+        _defaultSettings = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
     }
-    
+
     return self;
 }
 
@@ -56,13 +62,13 @@ static GameManager *_sharedInstance = nil;
     _targets = nil;
     _waypoints = nil;
     _waves = nil;
-    
+
     [_towers release];
     _towers = nil;
 
     [_projectiles release];
     _projectiles = nil;
-    
+
     [super dealloc];
 }
 

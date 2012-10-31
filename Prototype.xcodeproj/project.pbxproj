@@ -16,6 +16,7 @@
 		C891F27216021E87001AFE60 /* hud.m in Sources */ = {isa = PBXBuildFile; fileRef = C891F27116021E87001AFE60 /* hud.m */; };
 		C8CFE9931640648D00E199FF /* Projectile.m in Sources */ = {isa = PBXBuildFile; fileRef = C8CFE9921640648D00E199FF /* Projectile.m */; };
 		C8CFE9961640674F00E199FF /* Projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = C8CFE9951640674F00E199FF /* Projectile.png */; };
+		C8CFE99E1640952600E199FF /* DefaultSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8CFE99D1640952600E199FF /* DefaultSettings.plist */; };
 		C8EDC5D015FFE11D00B7E47A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8EDC5CF15FFE11D00B7E47A /* QuartzCore.framework */; };
 		C8EDC5D215FFE11D00B7E47A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8EDC5D115FFE11D00B7E47A /* OpenGLES.framework */; };
 		C8EDC5D415FFE11D00B7E47A /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8EDC5D315FFE11D00B7E47A /* OpenAL.framework */; };
@@ -165,6 +166,8 @@
 		C8CFE9911640648D00E199FF /* Projectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Projectile.h; sourceTree = "<group>"; };
 		C8CFE9921640648D00E199FF /* Projectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Projectile.m; sourceTree = "<group>"; };
 		C8CFE9951640674F00E199FF /* Projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Projectile.png; sourceTree = "<group>"; };
+		C8CFE99C164093E800E199FF /* ConstantsAndMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConstantsAndMacros.h; sourceTree = "<group>"; };
+		C8CFE99D1640952600E199FF /* DefaultSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultSettings.plist; sourceTree = "<group>"; };
 		C8EDC5CB15FFE11D00B7E47A /* Prototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8EDC5CF15FFE11D00B7E47A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C8EDC5D115FFE11D00B7E47A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -461,6 +464,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C8CFE99B164093D800E199FF /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				C8CFE99C164093E800E199FF /* ConstantsAndMacros.h */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
 		C8EDC5C015FFE11D00B7E47A = {
 			isa = PBXGroup;
 			children = (
@@ -497,6 +508,7 @@
 		C8EDC5E115FFE11D00B7E47A /* Prototype */ = {
 			isa = PBXGroup;
 			children = (
+				C8CFE99B164093D800E199FF /* Other */,
 				C8EDC77115FFEAFF00B7E47A /* CoreClasses */,
 				C8EDC76915FFE40300B7E47A /* Managers */,
 				C8EDC76D15FFE85C00B7E47A /* Utils */,
@@ -528,6 +540,7 @@
 				C8EDC5F715FFE11D00B7E47A /* Icon@2x.png */,
 				C8EDC5F915FFE11D00B7E47A /* Info.plist */,
 				C8EDC5FA15FFE11D00B7E47A /* iTunesArtwork */,
+				C8CFE99D1640952600E199FF /* DefaultSettings.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1019,6 +1032,7 @@
 				C891F26D16021E4F001AFE60 /* hud_background.png in Resources */,
 				C891F26F16021E75001AFE60 /* tower_range.png in Resources */,
 				C8CFE9961640674F00E199FF /* Projectile.png in Resources */,
+				C8CFE99E1640952600E199FF /* DefaultSettings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

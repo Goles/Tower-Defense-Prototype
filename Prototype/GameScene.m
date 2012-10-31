@@ -8,10 +8,11 @@
 
 #import "GameScene.h"
 #import "GameManager.h"
+#import "ConstantsAndMacros.h"
 #import "Wave.h"
 #import "Creep.h"
 #import "Waypoint.h"
-#import "Tower.h"	
+#import "Tower.h"
 #import "hud.h"
 #import "Projectile.h"
 
@@ -23,10 +24,10 @@
     GameScene *layer = [GameScene node];
     [scene addChild:layer z:1];
     [scene addChild:[Hud sharedManager] z:2];
-    
+
     [[GameManager sharedManager] setGameLayer:layer];
     [[GameManager sharedManager] setHudLayer:[Hud sharedManager]];
-    
+
     return scene;
 }
 
@@ -37,22 +38,27 @@
         _background = [_tileMap layerNamed:@"Background"];
         _background.anchorPoint = ccp(0, 0);
         [self addChild:_tileMap z:0];
-        
+
         // Add WP & Wave
         [self addWaypoints];
         [self addWaves];
-        
+
         // Setup the Game Loop
         [self schedule:@selector(update:)];
         [self schedule:@selector(gameLogic:) interval:1.0];
-        
+
         // Setup current level & position
         _currentLevel = 0;
         self.position = ccp(-280, 0);
+
+        // Load Defaults
+        _totalMoney = [[[GameManager sharedManager] defaultSettings] objectForKey:K_TOTAL_INITIAL_MONEY];
+        NSLog(@"%@", _totalMoney);
     }
-    
+
     return self;
 }
+
 
 - (void) addWaves
 {
@@ -79,47 +85,46 @@
 
 - (CGPoint) tileCoordForPosition:(CGPoint) position
 {
-	int x = position.x / self.tileMap.tileSize.width;
-	int y = ((self.tileMap.mapSize.height * self.tileMap.tileSize.height) - position.y) / self.tileMap.tileSize.height;
-	
-	return ccp(x,y);
+    int x = position.x / self.tileMap.tileSize.width;
+    int y = ((self.tileMap.mapSize.height * self.tileMap.tileSize.height) - position.y) / self.tileMap.tileSize.height;
+    return ccp(x,y);
 }
 
 - (void) addTowerAtPoint:(CGPoint) point
 {
-	Tower *tower = nil;
-	CGPoint towerPosition = [self tileCoordForPosition:point];
-	
-	int tileGid = [self.background tileGIDAt:towerPosition];
-	NSDictionary *props = [self.tileMap propertiesForGID:tileGid];
-	NSString *type = [props valueForKey:@"buildable"];
-	
-	if([type isEqualToString: @"1"]) {
-		tower = [BasicTower tower];
-		tower.position = ccp((towerPosition.x * 32) + 16, self.tileMap.contentSize.height - (towerPosition.y * 32) - 16);
-		[self addChild:tower z:1];
-		
-		tower.tag = 1;
-		[[GameManager sharedManager].towers addObject:tower];
-		
-	} else {
-		NSLog(@"Tile Not Buildable");
-	}
-    
+    Tower *tower = nil;
+    CGPoint towerPosition = [self tileCoordForPosition:point];
+
+    int tileGid = [self.background tileGIDAt:towerPosition];
+    NSDictionary *props = [self.tileMap propertiesForGID:tileGid];
+    NSString *type = [props valueForKey:@"buildable"];
+
+    if([type isEqualToString: @"1"]) {
+        tower = [BasicTower tower];
+        tower.position = ccp((towerPosition.x * 32) + 16, self.tileMap.contentSize.height - (towerPosition.y * 32) - 16);
+        [self addChild:tower z:1];
+
+        tower.tag = 1;
+        [[GameManager sharedManager].towers addObject:tower];
+
+    } else {
+        NSLog(@"Tile Not Buildable");
+    }
+
 }
 
 - (BOOL) canBuildAtPosition:(CGPoint) point
 {
-	CGPoint towerPosition = [self tileCoordForPosition:point];
-	int tileGid = [self.background tileGIDAt:towerPosition];
-	NSDictionary *properties = [self.tileMap propertiesForGID:tileGid];
-	NSString *type = [properties valueForKey:@"buildable"];
-	
-	if([type isEqualToString: @"1"]) {
-		return YES;
-	}
-	
-	return NO;
+    CGPoint towerPosition = [self tileCoordForPosition:point];
+    int tileGid = [self.background tileGIDAt:towerPosition];
+    NSDictionary *properties = [self.tileMap propertiesForGID:tileGid];
+    NSString *type = [properties valueForKey:@"buildable"];
+
+    if([type isEqualToString: @"1"]) {
+        return YES;
+    }
+
+    return NO;
 }
 
 - (Wave *) currentWave
@@ -140,49 +145,49 @@
 
 - (void) addTarget
 {
-	Wave *wave = [self currentWave];
-    
-	if (wave.totalCreeps < 0) {
-		return; // Wave is over
+    Wave *wave = [self currentWave];
+
+    if (wave.totalCreeps < 0) {
+        return; // Wave is over
     }
-	
-	wave.totalCreeps--;
-	
+
+    wave.totalCreeps--;
+
     Creep *target = nil;
-    
+
     if ((arc4random() % 2) == 0) {
         target = [FastRed creep];
     } else {
         target = [FastRed creep];
-//        target = [StrongGreen creep];
+        //        target = [StrongGreen creep];
     }
-	
-	Waypoint *waypoint = [target currentWaypoint];
-	target.position = waypoint.position;
-	waypoint = [target nextWaypoint];
-	
-	[self addChild:target z:1];
-	
-	int moveDuration = target.moveDuration;
-	id actionMove = [CCMoveTo actionWithDuration:moveDuration position:waypoint.position];
-	id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(followPath:)];
-	[target runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
-	
-	// Add to targets array
-	target.tag = 1;
-	[[GameManager sharedManager].targets addObject:target];
-	
+
+    Waypoint *waypoint = [target currentWaypoint];
+    target.position = waypoint.position;
+    waypoint = [target nextWaypoint];
+
+    [self addChild:target z:1];
+
+    int moveDuration = target.moveDuration;
+    id actionMove = [CCMoveTo actionWithDuration:moveDuration position:waypoint.position];
+    id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(followPath:)];
+    [target runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
+
+    // Add to targets array
+    target.tag = 1;
+    [[GameManager sharedManager].targets addObject:target];
+
 }
 
 - (void) followPath:(id) sender
 {
-	Creep *creep = (Creep *)sender;
-	Waypoint *waypoint = [creep nextWaypoint];
-    
-	id actionMove = [CCMoveTo actionWithDuration:creep.moveDuration position:waypoint.position];
-	id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(followPath:)];
-	[creep stopAllActions];
-	[creep runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
+    Creep *creep = (Creep *)sender;
+    Waypoint *waypoint = [creep nextWaypoint];
+
+    id actionMove = [CCMoveTo actionWithDuration:creep.moveDuration position:waypoint.position];
+    id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(followPath:)];
+    [creep stopAllActions];
+    [creep runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
 }
 
 - (void) gameLogic: (ccTime) dt
@@ -190,7 +195,7 @@
     static double lastTimeTargetAdded = 0.0;
     Wave *wave = [self currentWave];
     double now = [[NSDate date] timeIntervalSince1970];
-    
+
     // Check if we should add a Creep
     if (lastTimeTargetAdded == 0 || (now - lastTimeTargetAdded) >= wave.spawnRate) {
         [self addTarget];
@@ -201,26 +206,26 @@
 - (void) update:(ccTime) dt
 {
     GameManager *m = [GameManager sharedManager];
-	NSMutableArray *projectilesToDelete = [[NSMutableArray alloc] init];
+    NSMutableArray *projectilesToDelete = [[NSMutableArray alloc] init];
 
-	for (Projectile *projectile in m.projectiles) {
+    for (Projectile *projectile in m.projectiles) {
 
-		CGRect projectileRect = CGRectMake(projectile.position.x - (projectile.contentSize.width/2),
-										   projectile.position.y - (projectile.contentSize.height/2),
-										   projectile.contentSize.width,
-										   projectile.contentSize.height);
+        CGRect projectileRect = CGRectMake(projectile.position.x - (projectile.contentSize.width/2),
+                projectile.position.y - (projectile.contentSize.height/2),
+                projectile.contentSize.width,
+                projectile.contentSize.height);
 
-		NSMutableArray *targetsToDelete = [[NSMutableArray alloc] init];
+        NSMutableArray *targetsToDelete = [[NSMutableArray alloc] init];
 
-		for (CCSprite *target in m.targets) {
-			CGRect targetRect = CGRectMake(target.position.x - (target.contentSize.width/2),
-										   target.position.y - (target.contentSize.height/2),
-										   target.contentSize.width,
-										   target.contentSize.height);
+        for (CCSprite *target in m.targets) {
+            CGRect targetRect = CGRectMake(target.position.x - (target.contentSize.width/2),
+                    target.position.y - (target.contentSize.height/2),
+                    target.contentSize.width,
+                    target.contentSize.height);
 
-			if (CGRectIntersectsRect(projectileRect, targetRect)) {
+            if (CGRectIntersectsRect(projectileRect, targetRect)) {
 
-				[projectilesToDelete addObject:projectile];
+                [projectilesToDelete addObject:projectile];
 
                 Creep *creep = (Creep *)target;
                 creep.currentHitPoints--;
@@ -230,22 +235,22 @@
                 }
                 break;
 
-			}
-		}
+            }
+        }
 
-		for (CCSprite *target in targetsToDelete) {
-			[m.targets removeObject:target];
-			[self removeChild:target cleanup:YES];
-		}
+        for (CCSprite *target in targetsToDelete) {
+            [m.targets removeObject:target];
+            [self removeChild:target cleanup:YES];
+        }
 
-		[targetsToDelete release];
-	}
+        [targetsToDelete release];
+    }
 
-	for (CCSprite *projectile in projectilesToDelete) {
-		[m.projectiles removeObject:projectile];
-		[self removeChild:projectile cleanup:YES];
-	}
-	[projectilesToDelete release];
+    for (CCSprite *projectile in projectilesToDelete) {
+        [m.projectiles removeObject:projectile];
+        [self removeChild:projectile cleanup:YES];
+    }
+    [projectilesToDelete release];
 }
 
 - (CGPoint) boundLayerPos:(CGPoint) newPos
@@ -265,24 +270,24 @@
         CGPoint touchLocation = [recognizer locationInView:recognizer.view];
         touchLocation = [[CCDirector sharedDirector] convertToGL:touchLocation];
         touchLocation = [self convertToNodeSpace:touchLocation];
-        
+
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         CGPoint translation = [recognizer translationInView:recognizer.view];
         translation = ccp(translation.x, -translation.y);
         CGPoint newPos = ccpAdd(self.position, translation);
         self.position = [self boundLayerPos:newPos];
         [recognizer setTranslation:CGPointZero inView:recognizer.view];
-        
+
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-		float scrollDuration = 0.2;
-		CGPoint velocity = [recognizer velocityInView:recognizer.view];
-		CGPoint newPos = ccpAdd(self.position, ccpMult(ccp(velocity.x, velocity.y * -1), scrollDuration));
-		newPos = [self boundLayerPos:newPos];
-        
-		[self stopAllActions];
-		CCMoveTo *moveTo = [CCMoveTo actionWithDuration:scrollDuration position:newPos];
-		[self runAction:[CCEaseOut actionWithAction:moveTo rate:1]];
-        
+        float scrollDuration = 0.2;
+        CGPoint velocity = [recognizer velocityInView:recognizer.view];
+        CGPoint newPos = ccpAdd(self.position, ccpMult(ccp(velocity.x, velocity.y * -1), scrollDuration));
+        newPos = [self boundLayerPos:newPos];
+
+        [self stopAllActions];
+        CCMoveTo *moveTo = [CCMoveTo actionWithDuration:scrollDuration position:newPos];
+        [self runAction:[CCEaseOut actionWithAction:moveTo rate:1]];
+
     }
 }
 

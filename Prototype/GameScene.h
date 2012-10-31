@@ -18,6 +18,7 @@
 @property (strong) CCTMXTiledMap *tileMap;
 @property (strong) CCTMXLayer *background;
 @property (assign) int currentLevel;
+@property (assign) int totalMoney;
 
 + (id) scene;
 - (void) addWaypoints;
