@@ -14,6 +14,7 @@
 		C891F26D16021E4F001AFE60 /* hud_background.png in Resources */ = {isa = PBXBuildFile; fileRef = C891F26C16021E4F001AFE60 /* hud_background.png */; };
 		C891F26F16021E75001AFE60 /* tower_range.png in Resources */ = {isa = PBXBuildFile; fileRef = C891F26E16021E75001AFE60 /* tower_range.png */; };
 		C891F27216021E87001AFE60 /* hud.m in Sources */ = {isa = PBXBuildFile; fileRef = C891F27116021E87001AFE60 /* hud.m */; };
+		C8CB171C1641AD680046DE8C /* GameStateHud.m in Sources */ = {isa = PBXBuildFile; fileRef = C8CB171B1641AD680046DE8C /* GameStateHud.m */; };
 		C8CFE9931640648D00E199FF /* Projectile.m in Sources */ = {isa = PBXBuildFile; fileRef = C8CFE9921640648D00E199FF /* Projectile.m */; };
 		C8CFE9961640674F00E199FF /* Projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = C8CFE9951640674F00E199FF /* Projectile.png */; };
 		C8CFE99E1640952600E199FF /* DefaultSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8CFE99D1640952600E199FF /* DefaultSettings.plist */; };
@@ -163,6 +164,8 @@
 		C891F26E16021E75001AFE60 /* tower_range.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tower_range.png; sourceTree = "<group>"; };
 		C891F27016021E87001AFE60 /* hud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hud.h; sourceTree = "<group>"; };
 		C891F27116021E87001AFE60 /* hud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hud.m; sourceTree = "<group>"; };
+		C8CB171A1641AD680046DE8C /* GameStateHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStateHud.h; sourceTree = "<group>"; };
+		C8CB171B1641AD680046DE8C /* GameStateHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameStateHud.m; sourceTree = "<group>"; };
 		C8CFE9911640648D00E199FF /* Projectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Projectile.h; sourceTree = "<group>"; };
 		C8CFE9921640648D00E199FF /* Projectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Projectile.m; sourceTree = "<group>"; };
 		C8CFE9951640674F00E199FF /* Projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Projectile.png; sourceTree = "<group>"; };
@@ -464,6 +467,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C8CB17181641AD490046DE8C /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				C891F27016021E87001AFE60 /* hud.h */,
+				C891F27116021E87001AFE60 /* hud.m */,
+				C8CB171A1641AD680046DE8C /* GameStateHud.h */,
+				C8CB171B1641AD680046DE8C /* GameStateHud.m */,
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
 		C8CFE99B164093D800E199FF /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,6 +522,7 @@
 		C8EDC5E115FFE11D00B7E47A /* Prototype */ = {
 			isa = PBXGroup;
 			children = (
+				C8CB17181641AD490046DE8C /* Layers */,
 				C8CFE99B164093D800E199FF /* Other */,
 				C8EDC77115FFEAFF00B7E47A /* CoreClasses */,
 				C8EDC76915FFE40300B7E47A /* Managers */,
@@ -900,8 +915,6 @@
 		C8EDC76915FFE40300B7E47A /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				C891F27016021E87001AFE60 /* hud.h */,
-				C891F27116021E87001AFE60 /* hud.m */,
 				C8EDC7821600D67300B7E47A /* GameManager.h */,
 				C8EDC7831600D67300B7E47A /* GameManager.m */,
 			);
@@ -1153,6 +1166,7 @@
 				C891F25B16021012001AFE60 /* Tower.m in Sources */,
 				C891F27216021E87001AFE60 /* hud.m in Sources */,
 				C8CFE9931640648D00E199FF /* Projectile.m in Sources */,
+				C8CB171C1641AD680046DE8C /* GameStateHud.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

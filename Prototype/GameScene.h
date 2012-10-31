@@ -17,6 +17,7 @@
 
 @property (strong) CCTMXTiledMap *tileMap;
 @property (strong) CCTMXLayer *background;
+@property (strong) CCLabelTTF *totalMoneyLabel;
 @property (assign) int currentLevel;
 @property (assign) int totalMoney;
 

@@ -13,8 +13,9 @@
 #import "Creep.h"
 #import "Waypoint.h"
 #import "Tower.h"
-#import "hud.h"
 #import "Projectile.h"
+#import "hud.h"
+#import "GameStateHud.h"
 
 @implementation GameScene
 
@@ -24,9 +25,10 @@
     GameScene *layer = [GameScene node];
     [scene addChild:layer z:1];
     [scene addChild:[Hud sharedManager] z:2];
-
+    [scene addChild:[GameStateHud sharedManager] z:2];
     [[GameManager sharedManager] setGameLayer:layer];
     [[GameManager sharedManager] setHudLayer:[Hud sharedManager]];
+    [[GameManager sharedManager] setGameStateHudLayer:[GameStateHud sharedManager]];
 
     return scene;
 }
