@@ -10,11 +10,24 @@
 
 @class Waypoint;
 
+#pragma mark -
+#pragma mark For Tracking Creeps
+@protocol CreepTracker
+
+@optional
+-(void) creepDiedWithScore:(int)score andMoney:(int)money;
+@end
+
+#pragma mark -
+#pragma mark Creep
 @interface Creep : CCSprite
 
 @property (assign) int currentHitPoints;
 @property (assign) int moveDuration;
 @property (assign) int currentWaypointIndex;
+@property (assign) int score;
+@property (assign) int money;
+@property (nonatomic, retain) id < CreepTracker > delegate;
 
 - (Waypoint *) currentWaypoint;
 - (Waypoint *) nextWaypoint;
@@ -33,3 +46,6 @@
 @interface StrongGreen: Creep
 + (id) creep;
 @end
+
+
+

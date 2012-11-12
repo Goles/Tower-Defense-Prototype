@@ -10,7 +10,6 @@
 #import "GameManager.h"
 #import "ConstantsAndMacros.h"
 #import "Wave.h"
-#import "Creep.h"
 #import "Waypoint.h"
 #import "Tower.h"
 #import "Projectile.h"
@@ -35,7 +34,7 @@
 - (id) init
 {
     if (self = [super init]) {
-        _tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"TileMap.tmx"];
+        _tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"_TileMap.tmx"];
         _background = [_tileMap layerNamed:@"Background"];
         _background.anchorPoint = ccp(0, 0);
         [self addChild:_tileMap z:0];
@@ -118,6 +117,14 @@
 }
 
 #pragma mark -
+#pragma mark CreepTracker Protocol
+-(void) creepDiedWithScore:(int) score andMoney:(int)money
+{
+    _totalMoney += money;
+    [(GameStateHud *)[GameManager sharedManager].gameStateHudLayer updateMoneyLabel:_totalMoney];
+}
+
+#pragma mark -
 #pragma mark Default Methods
 - (void) onEnter
 {
@@ -177,6 +184,8 @@
         target = [FastRed creep];
         //        target = [StrongGreen creep];
     }
+
+    target.delegate = self;
 
     Waypoint *waypoint = [target currentWaypoint];
     target.position = waypoint.position;

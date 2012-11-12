@@ -7,13 +7,14 @@
 //
 
 #import "cocos2d.h"
+#import "Creep.h"
 
 @class Creep;
 @class Waypoint;
 @class Wave;
 @class Hud;
 
-@interface GameScene : CCLayer
+@interface GameScene : CCLayer <CreepTracker>
 
 @property (strong) CCTMXTiledMap *tileMap;
 @property (strong) CCTMXLayer *background;
