@@ -29,7 +29,6 @@
     [[GameManager sharedManager] setGameLayer:layer];
     [[GameManager sharedManager] setHudLayer:[Hud sharedManager]];
     [[GameManager sharedManager] setGameStateHudLayer:[GameStateHud sharedManager]];
-
     return scene;
 }
 
@@ -54,7 +53,7 @@
         self.position = ccp(-280, 0);
 
         // Load Defaults
-        _totalMoney = [[[GameManager sharedManager] defaultSettings] objectForKey:K_TOTAL_INITIAL_MONEY];
+        _totalMoney = [[[[GameManager sharedManager] defaultSettings] objectForKey:K_TOTAL_INITIAL_MONEY] intValue];
     }
 
     return self;
@@ -115,6 +114,14 @@
     } else {
         NSLog(@"Tile Not Buildable");
     }
+}
+
+#pragma mark -
+#pragma mark Default Methods
+- (void) onEnter
+{
+    CCLayer *stateHud = [GameManager sharedManager].gameStateHudLayer;
+    [stateHud updateMoneyLabel:_totalMoney];
 }
 
 #pragma mark -
@@ -183,7 +190,6 @@
     // Add to targets array
     target.tag = 1;
     [[GameManager sharedManager].targets addObject:target];
-
 }
 
 - (void) followPath:(id) sender
@@ -218,20 +224,19 @@
     for (Projectile *projectile in m.projectiles) {
 
         CGRect projectileRect = CGRectMake(projectile.position.x - (projectile.contentSize.width/2),
-                projectile.position.y - (projectile.contentSize.height/2),
-                projectile.contentSize.width,
-                projectile.contentSize.height);
+                                           projectile.position.y - (projectile.contentSize.height/2),
+                                           projectile.contentSize.width,
+                                           projectile.contentSize.height);
 
         NSMutableArray *targetsToDelete = [[NSMutableArray alloc] init];
 
         for (CCSprite *target in m.targets) {
             CGRect targetRect = CGRectMake(target.position.x - (target.contentSize.width/2),
-                    target.position.y - (target.contentSize.height/2),
-                    target.contentSize.width,
-                    target.contentSize.height);
+                                           target.position.y - (target.contentSize.height/2),
+                                           target.contentSize.width,
+                                           target.contentSize.height);
 
             if (CGRectIntersectsRect(projectileRect, targetRect)) {
-
                 [projectilesToDelete addObject:projectile];
 
                 Creep *creep = (Creep *)target;
@@ -240,8 +245,8 @@
                 if (creep.currentHitPoints <= 0) {
                     [targetsToDelete addObject:target];
                 }
-                break;
 
+                break;
             }
         }
 
@@ -257,6 +262,7 @@
         [m.projectiles removeObject:projectile];
         [self removeChild:projectile cleanup:YES];
     }
+
     [projectilesToDelete release];
 }
 

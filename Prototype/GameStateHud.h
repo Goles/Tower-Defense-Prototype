@@ -16,5 +16,6 @@
 @property (strong) CCLabelTTF *moneyAmountLabel;
 
 + (GameStateHud *) sharedManager;
+- (void) updateMoneyLabel:(int) amount;
 
 @end
