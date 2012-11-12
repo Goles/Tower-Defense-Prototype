@@ -109,6 +109,7 @@
             [self addChild:tower z:1];
             tower.tag = 1;
             [[GameManager sharedManager].towers addObject:tower];
+            [(GameStateHud *)[GameManager sharedManager].gameStateHudLayer updateMoneyLabel:_totalMoney];
         }
 
     } else {

@@ -17,5 +17,7 @@
 
 + (GameStateHud *) sharedManager;
 - (void) updateMoneyLabel:(int) amount;
+- (void) updateWaveLabel:(int) wave;
+- (void) updateScoreLabel:(int) points;
 
 @end

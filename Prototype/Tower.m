@@ -44,7 +44,6 @@
 - (id) init
 {
     if (self = [super init]) {
-        self.cost = 20;
     }
 
     return self;
@@ -54,8 +53,9 @@
 {
     Tower *tower = [[[super alloc] initWithFile:@"tower1.png"] autorelease];
     if (tower) {
-        tower.range = 300; // Range in Pixels
-        [tower schedule:@selector(logic:) interval:0.2f];
+        tower.range = 100; // Range in Pixels
+        tower.cost = 20;
+        [tower schedule:@selector(logic:) interval:1.0f];
     }
 
     return tower;

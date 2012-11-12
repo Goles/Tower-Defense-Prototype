@@ -38,9 +38,10 @@
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_Default];
 
         // Init the money amount string
-        _moneyAmountLabel = [CCLabelTTF labelWithString:@"Money: 0" fontName:@"Helvetica" fontSize:18];
-        _moneyAmountLabel.position = ccp(120, 320 - _moneyAmountLabel.texture.contentSizeInPixels.height);
-        _moneyAmountLabel.color = ccc3(1, 1, 1);
+        _moneyAmountLabel = [CCLabelTTF labelWithString:@"Money: 0" fontName:@"Helvetica" fontSize:16];
+        _moneyAmountLabel.position = ccp(0 + _moneyAmountLabel.texture.contentSizeInPixels.width/(1.5),
+                                         320 - _moneyAmountLabel.texture.contentSizeInPixels.height);
+        _moneyAmountLabel.color = ccc3(255, 255, 255);
         [self addChild:_moneyAmountLabel];
     }
 
