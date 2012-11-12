@@ -120,6 +120,7 @@
 #pragma mark Default Methods
 - (void) onEnter
 {
+    [super onEnter];
     CCLayer *stateHud = [GameManager sharedManager].gameStateHudLayer;
     [stateHud updateMoneyLabel:_totalMoney];
 }

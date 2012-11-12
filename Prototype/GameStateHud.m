@@ -27,9 +27,7 @@
 - (id) init
 {
     if (self = [super init]) {
-        // CGSize windowSize = [CCDirector sharedDirector].winSize;
-
-        // Init the background Sprite
+       // Init the background Sprite
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGB565];
         _background = [CCSprite spriteWithFile:@"GameStateHud.png"];
         _background.anchorPoint = ccp(0, 0);
@@ -51,7 +49,7 @@
 
 - (void) updateMoneyLabel:(int)amount
 {
-    [_moneyAmountLabel setString:[NSString stringWithFormat:@"Money: %d", amount]];
+   [_moneyAmountLabel setString:[NSString stringWithFormat:@"Money: %d", amount]];
 }
 
 @end
